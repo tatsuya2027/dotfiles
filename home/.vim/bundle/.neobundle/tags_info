@@ -1,0 +1,9 @@
+html5.vim
+neobundle.vim
+neocomplcache
+syntastic
+vdebug
+vim-colors-solarized
+vim-css3-syntax
+vim-javascript
+vimproc
