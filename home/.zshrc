@@ -1,0 +1,76 @@
+#----------------------------------------
+## 基本設定
+#----------------------------------------
+#環境変数
+
+#history
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt hist_ignore_dups     # ignore duplication command history list
+setopt share_history        # share command history data
+#----------------------------------------
+## ディスプレイ
+#----------------------------------------
+色を使用出来るようにする
+autoload -Uz colors
+colors
+
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+#ls color
+alias ls='ls --color=auto'
+alias gls="gls --color"
+
+zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+#プロンプト
+# 1行表示
+# PROMPT="%~ %# "
+# 2行表示
+PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
+%# "
+#git表示
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+	psvar=()
+	LANG=en_US.UTF-8 vcs_info
+	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{green}%1v%f|)"
+#----------------------------------------
+## 補完
+#----------------------------------------
+# 補完機能を有効にする
+autoload -Uz compinit
+compinit
+# 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# ../ の後は今いるディレクトリを補完しない
+zstyle ':completion:*' ignore-parents parent pwd ..
+# sudo の後ろでコマンド名を補完する
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+     /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+# ps コマンドのプロセス名補完
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+#setu pcake command
+PROTON_HOME=~/proton
+PATH=${PATH}:${PROTON_HOME}/src/server/node_modules/coffee-script/bin
+PATH=${PATH}:${PROTON_HOME}/src/server/node_modules/.bin
+PATH=${PATH}:${HOME}/.nvm/v0.4.12/bin:~/bin
+export PATH
+export NODE_PATH=/usr/lib/nodejs
+#----------------------------------------
+## コマンド
+#----------------------------------------
+#戻る系
+alias dc='cd ../'
+alias ddc='cd ../../'
+alias dddc='cd ../../../'
+alias ddddc='cd ../../../../'
+alias dddddc='cd ../../../../../'
+#tmux
+alias tmux='tmux -u'
+#grep
+alias grep='grep --color=auto'
