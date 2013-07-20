@@ -12,7 +12,7 @@ setopt share_history        # share command history data
 #----------------------------------------
 ## ディスプレイ
 #----------------------------------------
-色を使用出来るようにする
+#色を使用出来るようにする
 autoload -Uz colors
 colors
 

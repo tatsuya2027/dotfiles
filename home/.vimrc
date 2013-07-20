@@ -190,9 +190,9 @@ syn keyword htmlArg contained hidden role
 syn match   htmlArg "\<\(aria-[\-a-zA-Z0-9_]\+\)=" contained
 syn match   htmlArg contained "\s*data-[-a-zA-Z0-9_]\+"
 "-------------------------------------------------
-""" neocomplcache設定
+"" neocomplcache設定
 "-------------------------------------------------
-"""phpファイル
+""phpファイル
 autocmd BufRead *.php\|*.ctp :set dictionary=~/.vim/dictionaries/php.dict filetype=php
 autocmd FileType javascript :set dictionary=javascript.dict
 let g:neocomplcache_enable_at_startup = 1
@@ -211,18 +211,7 @@ highlight PMenuSbar ctermbg=4
 "-------------------------------------------------
 "" 文法チェック
 "-------------------------------------------------
-"" ファイル保存時にシンタックスチェックする
-execute pathogen#infect()
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_echo_current_error = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_enable_highlighting = 1
-" なんでか分からないけど php コマンドのオプションを上書かないと動かなかった
-let g:syntastic_php_php_args = '-l'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" PHPファイル保存時にシンタックスチェックする
 " makeコマンドを使えるようにする
 :set makeprg=php\ -l\ %
 :set errorformat=%m\ in\ %f\ on\ line\ %l
