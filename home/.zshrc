@@ -2,6 +2,8 @@
 ## 基本設定
 #----------------------------------------
 #環境変数
+export EDITOR=vim
+export GIT_EDITOR=vim
 
 #history
 HISTFILE=~/.zsh_history
