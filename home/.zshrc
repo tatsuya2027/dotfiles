@@ -78,3 +78,9 @@ alias tmux='tmux -u'
 alias grep='grep --color=auto'
 #grep
 alias gfind='find . -type -f | xargs grep'
+#git
+
+alias gs='git status'
+alias ga='git add'
+alias gca='git commit -av'
+alias gch='git checkout'
