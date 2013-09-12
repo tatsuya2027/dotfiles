@@ -76,3 +76,5 @@ alias dddddc='cd ../../../../../'
 alias tmux='tmux -u'
 #grep
 alias grep='grep --color=auto'
+#grep
+alias gfind='find . -type -f | xargs grep'
