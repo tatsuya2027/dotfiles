@@ -67,6 +67,7 @@ set statusline=%<%f\%m%r%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%v
 set  termencoding=utf-8
 set  encoding=utf-8
 set  fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
+let g:statline_syntastic = 0
 """""""""""""""""""""""""""""
 "可視化
 """"""""""""""""""""""""""""""""
@@ -230,7 +231,6 @@ let g:syntastic_enable_highlighting = 1
 " なんでか分からないけど php コマンドのオプションを上書かないと動かなかった
 let g:syntastic_php_php_args = '-l'
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 "-------------------------------------------------
 "" xdebug設定

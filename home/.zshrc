@@ -11,6 +11,8 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
+# Ctrl+R is incremental search like a bash.
+ bindkey "^R" history-incremental-search-backward
 #----------------------------------------
 ## ディスプレイ
 #----------------------------------------
@@ -84,3 +86,6 @@ alias gs='git status'
 alias ga='git add'
 alias gca='git commit -av'
 alias gch='git checkout'
+
+keychain ~/.ssh/id_rsa
+source ~/.keychain/itatsuya-sh
