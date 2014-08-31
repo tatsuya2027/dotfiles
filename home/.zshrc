@@ -28,7 +28,6 @@ alias gls="gls --color"
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 #プロンプト
 # 1行表示
-# PROMPT="%~ %# "
 #git表示
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
@@ -83,14 +82,14 @@ alias gc='git commit -v'
 alias gch='git checkout'
 #----------------------------------------
 ## vimモード
-#----------------------------------------
+#--------------"--------------------------
 function zle-line-init zle-keymap-select {
 case $KEYMAP in
     vicmd)
-        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[red]%}NOR%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} "
+        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[red]%}NOR%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} %{${fg[yellow]}%}%~%{${reset_color}%}"
         ;;
     main|viins)
-        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[cyan]%}INS%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} "
+        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[cyan]%}INS%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} %{${fg[yellow]}%}%~%{${reset_color}%} "
         ;;
 esac
 zle reset-prompt
