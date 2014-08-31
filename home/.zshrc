@@ -2,6 +2,8 @@
 ## 基本設定
 #----------------------------------------
 #環境変数
+export EDITOR=vim
+export GIT_EDITOR=vim
 
 #history
 HISTFILE=~/.zsh_history
@@ -10,26 +12,18 @@ SAVEHIST=10000
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
 setopt correct
+# Ctrl+R is incremental search like a bash.
+ bindkey "^R" history-incremental-search-backward
 #----------------------------------------
 ## ディスプレイ
 #----------------------------------------
 #色を使用出来るようにする
 autoload -Uz colors
 colors
-
-export LSCOLORS=exfxcxdxbxegedabagacad
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-#ls color
-alias ls='ls --color=auto'
-alias gls="gls --color"
-
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 #プロンプト
 # 1行表示
 # PROMPT="%~ %# "
-# 2行表示
-PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
-%# "
 #git表示
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
@@ -75,12 +69,13 @@ alias dddddc='cd ../../../../../'
 alias tmux='tmux -u'
 #grep
 alias grep='grep --color=auto'
-alias ls='ls'
+alias gfind='find . -type -f | xargs grep'
 #git
 alias gs='git status'
 alias ga='git add'
 alias glog='git log --graph --pretty=oneline'
 alias gc='git commit -v'
+alias gch='git checkout'
 #----------------------------------------
 ## vimモード
 #----------------------------------------
