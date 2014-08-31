@@ -20,6 +20,11 @@ setopt correct
 #色を使用出来るようにする
 autoload -Uz colors
 colors
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+alias ls="ls -GF"
+alias gls="gls --color"
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 #プロンプト
 # 1行表示
