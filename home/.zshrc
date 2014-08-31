@@ -9,10 +9,11 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
+setopt correct
 #----------------------------------------
 ## ディスプレイ
 #----------------------------------------
-色を使用出来るようにする
+#色を使用出来るようにする
 autoload -Uz colors
 colors
 
@@ -74,3 +75,25 @@ alias dddddc='cd ../../../../../'
 alias tmux='tmux -u'
 #grep
 alias grep='grep --color=auto'
+alias ls='ls'
+#git
+alias gs='git status'
+alias ga='git add'
+alias glog='git log --graph --pretty=oneline'
+alias gc='git commit -v'
+#----------------------------------------
+## vimモード
+#----------------------------------------
+function zle-line-init zle-keymap-select {
+case $KEYMAP in
+    vicmd)
+        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[red]%}NOR%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} "
+        ;;
+    main|viins)
+        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[cyan]%}INS%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} "
+        ;;
+esac
+zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
