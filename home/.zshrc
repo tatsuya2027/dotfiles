@@ -14,6 +14,14 @@ setopt share_history        # share command history data
 setopt correct
 # Ctrl+R is incremental search like a bash.
  bindkey "^R" history-incremental-search-backward
+ # do not use rm
+ to_trash() {
+     for file in $@
+     do
+         mv $file ~/.trash
+     done
+ }
+ alias rm="to_trash" 
 #----------------------------------------
 ## ディスプレイ
 #----------------------------------------
@@ -86,10 +94,10 @@ alias gch='git checkout'
 function zle-line-init zle-keymap-select {
 case $KEYMAP in
     vicmd)
-        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[red]%}NOR%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} %{${fg[yellow]}%}%~%{${reset_color}%}"
+        PROMPT="%{$fg[red]%}[%{$reset_color%}%n@%m/%{$fg_bold[red]%}NOR%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} %{${fg[yellow]}%}%~%{${reset_color}%}"
         ;;
     main|viins)
-        PROMPT="%{$fg[red]%}[%{$reset_color%}%n/%{$fg_bold[cyan]%}INS%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} %{${fg[yellow]}%}%~%{${reset_color}%} "
+        PROMPT="%{$fg[red]%}[%{$reset_color%}%n@%m/%{$fg_bold[cyan]%}INS%{$reset_color%}%{$fg[red]%}]%#%{$reset_color%} %{${fg[yellow]}%}%~%{${reset_color}%} "
         ;;
 esac
 zle reset-prompt
